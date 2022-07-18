@@ -1,0 +1,20 @@
+module.exports.name = [
+    'The Louvre',
+    'Van Gogh Museum',
+    'Rijksmuseum',
+    'British Museum',
+    'Vatican Museums',
+    'Metropolitan Museum of Art',
+    'National Gallery of Art',
+    'Tate Modern',
+    'Museum of Modern Art',
+    'Whitney Museum',
+    'Virginia Museum of Fine Arts',
+    'National Portrait Gallery',
+    'Art Institute of Chicago',
+    'Smithsonian American Art Museum',
+    'Nelson-Atkins Museum of Art',
+    'Cleveland Museum of Art',
+    'Art Gallery of New South Wales',
+    'Philadelphia Museum of Art'
+]
