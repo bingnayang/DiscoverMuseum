@@ -11,7 +11,7 @@
 
     <ul>
         <% for ( let museum of museums ) {%>
-            <li><%= museum.title %></li>
+            <li><a href="/museums/<%= museum.id %>"><%= museum.title %></a></li>
         <% } %>
     </ul>
 </body>
