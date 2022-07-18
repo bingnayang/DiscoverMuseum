@@ -31,11 +31,17 @@ app.get('/museums', async (req, res) => {
     res.render('museums/index', {museums});
 })
 
+// Museum route: GET /museums/new
+app.get('/museums/new', (req, res) => {
+    res.render('museums/new');
+})
+
 // Museum route: GET /museums/:id
 app.get('/museums/:id', async (req, res) => {
     const museum = await Museum.findById(req.params.id)
     res.render('museums/show', {museum});
 })
+
 
 // Listen to port 3000
 app.listen(3000, () => {
