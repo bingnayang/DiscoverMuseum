@@ -21,6 +21,9 @@ db.once("open", () => {
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname,'views'))
 
+// Middleware: body-parser
+app.use(express.urlencoded({extended: true}))
+
 app.get('/', (req, res) => {
     res.render('home')
 })
@@ -40,6 +43,13 @@ app.get('/museums/new', (req, res) => {
 app.get('/museums/:id', async (req, res) => {
     const museum = await Museum.findById(req.params.id)
     res.render('museums/show', {museum});
+})
+
+// Museum route: POST /museums
+app.post('/museums', async (req, res) => {
+    const museum = new Museum(req.body.museum);
+    await museum.save();
+    res.redirect(`/museums/${museum._id}`)
 })
 
 
