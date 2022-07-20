@@ -69,6 +69,13 @@ app.put('/museums/:id', async (req, res) => {
     res.redirect(`/museums/${museum._id}`)
 })
 
+// Museum route( delete museum ): DELETE /museums/:id
+app.delete('/museums/:id', async (req, res) => {
+    const { id } = req.params;
+    await Museum.findByIdAndDelete(id);
+    res.redirect(`/museums`)
+})
+
 // Listen to port 3000
 app.listen(3000, () => {
     console.log("Serving on port 3000")
