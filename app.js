@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const Museum = require('./models/museum');
+const methodOverride = require('method-override');
 
 // Connect mongoose and check for error
 const mongoose = require('mongoose')
@@ -23,6 +24,9 @@ app.set('views', path.join(__dirname,'views'))
 
 // Middleware: body-parser
 app.use(express.urlencoded({extended: true}))
+// Override using a query value
+app.use(methodOverride('_method'))
+
 
 app.get('/', (req, res) => {
     res.render('home')
@@ -52,6 +56,18 @@ app.post('/museums', async (req, res) => {
     res.redirect(`/museums/${museum._id}`)
 })
 
+// Museum route: GET /museums/:id/edit
+app.get('/museums/:id/edit', async (req, res) => {
+    const museum = await Museum.findById(req.params.id)
+    res.render('museums/edit', {museum});
+})
+
+// Museum route( update museum ): PUT /museums/:id
+app.put('/museums/:id', async (req, res) => {
+    const { id } = req.params;
+    const museum = await Museum.findByIdAndUpdate(id, {...req.body.museum });
+    res.redirect(`/museums/${museum._id}`)
+})
 
 // Listen to port 3000
 app.listen(3000, () => {
