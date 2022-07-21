@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 const path = require('path');
+const ejsMate = require('ejs-mate');
 const Museum = require('./models/museum');
 const methodOverride = require('method-override');
 
@@ -18,6 +19,8 @@ db.once("open", () => {
     console.log("Database connected");
 })
 
+// Use ejs-locals for all ejs templates:
+app.engine('ejs', ejsMate)
 // Using template engines with Express
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname,'views'))
