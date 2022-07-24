@@ -24,7 +24,10 @@ const seedDB = async () => {
         const random1000 = Math.floor(Math.random() * 1000);
         const museums = new Museum({
             location: `${cities[random1000].city}`,
-            title: `${sample(name)}`
+            title: `${sample(name)}`,
+            image: `https://images.unsplash.com/photo-1554907984-15263bfd63bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80`,
+            description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
+
         })
         await museums.save();
     }
